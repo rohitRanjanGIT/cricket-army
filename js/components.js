@@ -63,8 +63,10 @@ const BoardActions = (s) => (s === "soon" ? ["Preview", "Squads"] : ["Scorecard"
 
 const Board = (m, i) => `
   <div class="board${m.worm ? " has-worm" : ""}" role="tabpanel" id="board-${i}" aria-labelledby="chip-${i}" data-index="${i}"${i ? " inert" : ""}>
-    <div class="board-meta">${StatusBadge(m.status)}<span class="board-series">${esc(m.series)}</span><span class="board-venue">${esc(m.venue)}</span></div>
-    <div class="board-actions">${BoardActions(m.status)}</div>
+    <div class="board-head">
+      <div class="board-meta">${StatusBadge(m.status)}<span class="board-series">${esc(m.series)}</span><span class="board-venue">${esc(m.venue)}</span></div>
+      <div class="board-actions">${BoardActions(m.status)}</div>
+    </div>
     <div class="scoreboard">${ScoreRow(m, "t1")}${ScoreRow(m, "t2")}</div>
     <p class="board-note note"${m.status === "live" ? ' aria-live="polite"' : ""}>${esc(m.note)}</p>
     ${m.worm ? `<div class="board-live">
@@ -78,22 +80,32 @@ const TeamRow = ([n, score, overs], t) =>
 
 const ScoreChip = (m, i) => `
   <button class="score-chip" role="tab" id="chip-${i}" aria-controls="board-${i}" aria-selected="${i === 0}" tabindex="${i ? -1 : 0}" data-index="${i}">
-    <span class="chip-meta"><span class="chip-series">${esc(m.series)}</span>${StatusBadge(m.status)}</span>
+    <span class="chip-meta"><span class="chip-series">${esc(m.short)}</span>${StatusBadge(m.status)}</span>
     ${TeamRow(m.t1, "t1")}${TeamRow(m.t2, "t2")}
     <span class="chip-status note">${esc(m.note)}</span>
   </button>`;
 
 const Pylon = (side) => `<svg class="pylon pylon-${side}" viewBox="0 0 126 48">${times(21, (i) => `<circle cx="${9 + (i % 7) * 18}" cy="${8 + Math.floor(i / 7) * 16}" r="4"/>`)}</svg>`;
 
-const Stage = (matches) => `
+const StageHead = (label) =>
+  `<div class="stage-head"><span class="label">${esc(label)}</span><a class="more" href="#">View all ${ICON.chevron}</a></div>`;
+
+// The switcher comes first in the DOM, as tabs precede their panels; wide screens show it below the board with CSS order
+const Stage = (matches, stories) => `
   <div class="stage-sky" aria-hidden="true">
     ${Pylon("l")}${Pylon("r")}
     <div class="outfield"></div>
   </div>
   <div class="stage-inner">
-    <div class="pager"><div class="track">${matches.map(Board).join("")}</div></div>
-    <div class="rail-head"><span class="label">Matches</span><a class="more" href="#">View all ${ICON.chevron}</a></div>
-    <div class="rail" role="tablist" aria-label="Choose a match"><span class="rail-pill" aria-hidden="true"></span>${matches.map(ScoreChip).join("")}</div>
+    <div class="stage-main">
+      ${StageHead("Matches")}
+      <div class="rail" role="tablist" aria-label="Choose a match"><span class="rail-pill" aria-hidden="true"></span>${matches.map(ScoreChip).join("")}</div>
+      <div class="pager"><div class="track">${matches.map(Board).join("")}</div></div>
+    </div>
+    <aside class="stage-news" aria-label="Top stories">
+      ${StageHead("Top stories")}
+      <div class="hero-side">${stories.map(HeroItem).join("")}</div>
+    </aside>
   </div>`;
 
 // ---------- Editorial ----------

@@ -11,7 +11,7 @@ const TONE = {
 const DATA = {
   nav: ["Home", "Live Scores", "Schedule", "Series", "News", "Videos", "Photos", "Rankings", "Teams", "IPL", "Fantasy"],
   matches: [
-    { id: 1, series: "India vs Australia, 2nd ODI", status: "live", venue: "Wankhede Stadium, Mumbai", batting: "t2",
+    { id: 1, series: "India vs Australia, 2nd ODI", short: "2nd ODI", status: "live", venue: "Wankhede Stadium, Mumbai", batting: "t2",
       t1: ["IND", "287/6", "(48.2)"], t2: ["AUS", "241/8", "(45.0)"], note: "Australia need 47 runs in 30 balls",
       chase: { team: "Australia", target: 288, balls: 30 },
       over: ["1", "0", "4", "2", "0", "1"],
@@ -19,14 +19,14 @@ const DATA = {
       worm: { overs: 50,
         t1: [[0, 0], [5, 31], [10, 58], [15, 82], [20, 109], [25, 134], [30, 163], [35, 192], [40, 226], [45, 263], [48.33, 287]],
         t2: [[0, 0], [5, 24], [10, 47], [15, 79], [20, 101], [25, 122], [30, 148], [35, 171], [40, 198], [45, 241]] } },
-    { id: 2, series: "England vs South Africa, 3rd T20I", status: "live", venue: "Lord's, London", batting: "t1",
+    { id: 2, series: "England vs South Africa, 3rd T20I", short: "3rd T20I", status: "live", venue: "Lord's, London", batting: "t1",
       t1: ["ENG", "168/4", "(17.3)"], t2: ["SA", "Yet to bat", ""], note: "England batting first at 9.60 an over",
       over: ["6", "1", "0"],
       stats: [["Run rate", "9.60"], ["Projected", "192"]],
       worm: { overs: 20, t1: [[0, 0], [5, 58], [10, 96], [15, 139], [17.5, 168]] } },
-    { id: 3, series: "Ranji Trophy, Group A", status: "done", venue: "Eden Gardens, Kolkata",
+    { id: 3, series: "Ranji Trophy, Group A", short: "Ranji Trophy", status: "done", venue: "Eden Gardens, Kolkata",
       t1: ["BEN", "412 & 188", ""], t2: ["MUM", "356 & 190/4", ""], note: "Mumbai won by 6 wickets" },
-    { id: 4, series: "Pakistan vs New Zealand, 1st Test", status: "soon", venue: "National Stadium, Karachi",
+    { id: 4, series: "Pakistan vs New Zealand, 1st Test", short: "1st Test", status: "soon", venue: "National Stadium, Karachi",
       t1: ["PAK", "", ""], t2: ["NZ", "", ""], note: "Starts today, 10:00 AM IST" },
   ],
   // Sample ball-by-ball feed for the first match. Replace with a live score stream.

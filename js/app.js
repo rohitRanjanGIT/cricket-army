@@ -1,8 +1,8 @@
 const $ = (id) => document.getElementById(id);
 
 $("site-header").innerHTML = Header(DATA.nav);
-$("stage").innerHTML = Stage(DATA.matches);
-$("hero").innerHTML = `${HeroLead(DATA.hero.lead)}<div class="hero-side">${DATA.hero.side.map(HeroItem).join("")}</div>`;
+$("stage").innerHTML = Stage(DATA.matches, DATA.hero.side);
+$("hero").innerHTML = HeroLead(DATA.hero.lead);
 
 // News with category tabs
 $("latest-news").innerHTML = SectionHead("Latest News") + Tabs(DATA.news.tabs, "All", "news") + '<div class="news-list" id="news-list"></div>';
