@@ -1,12 +1,9 @@
 // Sample content. Replace with API/CMS responses.
-const G = (a, b) => ({ "--c1": a, "--c2": b });
+const G = (a, b, c) => ({ "--c1": a, "--c2": b, "--c3": c });
 const TONE = {
-  night: G("#1f0f38", "#b48cff"),
-  pitch: G("#0c2f22", "#4fd39a"),
-  sky: G("#131f48", "#7ea2ff"),
-  ball: G("#3a0f18", "#ff7a7a"),
-  clay: G("#33220c", "#eeb04e"),
-  dusk: G("#3a1238", "#f08ad0"),
+  brand: G("#681ba7", "#d9c2f5", "#fff"),
+  deep: G("#3b1666", "#c9a8f2", "#fff"),
+  paper: G("#f3ecfb", "#a47ad6", "#5a1396"),
 };
 const DATA = {
   nav: ["Home", "Live Scores", "Schedule", "Series", "News", "Videos", "Photos", "Rankings", "Teams", "IPL", "Fantasy"],
@@ -33,22 +30,22 @@ const DATA = {
   feed: ["1", "4", "0", "1", "W", "2", "6", "1", "0", "4", "1", "1"],
   hero: {
     lead: { tag: "Match Report", title: "Kohli's 96 not out drives India to the brink of series win",
-      desc: "A masterclass in chasing under lights as India took a 2-0 lead in Mumbai.", time: "42m ago", art: "wagon", c: TONE.night },
+      desc: "A masterclass in chasing under lights as India took a 2-0 lead in Mumbai.", time: "42m ago", art: "wagon", c: TONE.brand },
     side: [
-      { tag: "Analysis", title: "Why the middle-overs spin squeeze decided the game", time: "2h ago", art: "pitch", c: TONE.sky },
-      { tag: "Injury", title: "Bumrah ruled out of next Test with back stiffness", time: "3h ago", art: "seam", c: TONE.ball },
-      { tag: "Auction", title: "Franchises finalise retention lists ahead of mega auction", time: "5h ago", art: "field", c: TONE.clay },
+      { tag: "Analysis", title: "Why the middle-overs spin squeeze decided the game", time: "2h ago", art: "pitch", c: TONE.paper },
+      { tag: "Injury", title: "Bumrah ruled out of next Test with back stiffness", time: "3h ago", art: "seam", c: TONE.paper },
+      { tag: "Auction", title: "Franchises finalise retention lists ahead of mega auction", time: "5h ago", art: "field", c: TONE.paper },
     ],
   },
   news: {
     tabs: ["All", "India", "IPL", "Test", "ODI", "T20", "Women's"],
     items: [
-      { cat: "India", tag: "India", title: "Rohit Sharma backs young top order after Mumbai collapse scare", desc: "The captain praised the fearless approach despite losing three early wickets.", time: "1h ago", art: "wagon", c: TONE.sky },
-      { cat: "IPL", tag: "IPL", title: "Mumbai Indians eye marquee overseas pacer in 2027 auction", desc: "Sources say the franchise has shortlisted four fast bowlers.", time: "2h ago", art: "seam", c: TONE.night },
-      { cat: "Test", tag: "Test", title: "Karachi pitch report: expect early seam, then turn from day three", desc: "Curators leave a generous grass covering on the surface.", time: "4h ago", art: "pitch", c: TONE.clay },
-      { cat: "Women's", tag: "Women's", title: "Harmanpreet's side announce squad for Australia tour", desc: "Three uncapped players earn call-ups in the 16-member group.", time: "6h ago", art: "field", c: TONE.dusk },
-      { cat: "T20", tag: "T20", title: "Buttler smashes fastest T20I fifty at Lord's in 17 balls", desc: "England post their highest powerplay score against South Africa.", time: "7h ago", art: "manhattan", c: TONE.pitch },
-      { cat: "ODI", tag: "ODI", title: "Records tumble as India and Australia combine for 528 runs", desc: "Highest aggregate in a Mumbai ODI and a new venue record.", time: "9h ago", art: "worm", c: TONE.night },
+      { cat: "India", tag: "India", title: "Rohit Sharma backs young top order after Mumbai collapse scare", desc: "The captain praised the fearless approach despite losing three early wickets.", time: "1h ago", art: "wagon", c: TONE.paper },
+      { cat: "IPL", tag: "IPL", title: "Mumbai Indians eye marquee overseas pacer in 2027 auction", desc: "Sources say the franchise has shortlisted four fast bowlers.", time: "2h ago", art: "seam", c: TONE.brand },
+      { cat: "Test", tag: "Test", title: "Karachi pitch report: expect early seam, then turn from day three", desc: "Curators leave a generous grass covering on the surface.", time: "4h ago", art: "pitch", c: TONE.paper },
+      { cat: "Women's", tag: "Women's", title: "Harmanpreet's side announce squad for Australia tour", desc: "Three uncapped players earn call-ups in the 16-member group.", time: "6h ago", art: "field", c: TONE.brand },
+      { cat: "T20", tag: "T20", title: "Buttler smashes fastest T20I fifty at Lord's in 17 balls", desc: "England post their highest powerplay score against South Africa.", time: "7h ago", art: "manhattan", c: TONE.paper },
+      { cat: "ODI", tag: "ODI", title: "Records tumble as India and Australia combine for 528 runs", desc: "Highest aggregate in a Mumbai ODI and a new venue record.", time: "9h ago", art: "worm", c: TONE.brand },
     ],
   },
   rankings: {
@@ -59,10 +56,10 @@ const DATA = {
   },
   points: { title: "Points Table · Group A", note: "Top two qualify", rows: [["IND", 5, 4, 1, 8], ["AUS", 5, 3, 2, 6], ["ENG", 5, 3, 2, 6], ["SA", 5, 2, 3, 4], ["NZ", 5, 1, 4, 2]] },
   videos: [
-    { title: "Highlights: India vs Australia 2nd ODI", dur: "8:42", views: "1.2M views", art: "wagon", c: TONE.pitch },
-    { title: "Kohli on his 96*: 'I enjoyed every ball'", dur: "4:15", views: "640K views", art: "lights", c: TONE.sky },
-    { title: "Top 10 catches of the season", dur: "6:03", views: "910K views", art: "field", c: TONE.ball },
-    { title: "Pitch vs Pitch: Mumbai or Karachi?", dur: "11:20", views: "210K views", art: "pitch", c: TONE.clay },
+    { title: "Highlights: India vs Australia 2nd ODI", dur: "8:42", views: "1.2M views", art: "wagon", c: TONE.paper },
+    { title: "Kohli on his 96*: 'I enjoyed every ball'", dur: "4:15", views: "640K views", art: "lights", c: TONE.paper },
+    { title: "Top 10 catches of the season", dur: "6:03", views: "910K views", art: "field", c: TONE.paper },
+    { title: "Pitch vs Pitch: Mumbai or Karachi?", dur: "11:20", views: "210K views", art: "pitch", c: TONE.paper },
   ],
   series: [
     { name: "India vs Australia ODIs", dates: "Oct 4 – Oct 10", meta: "3 ODIs · India lead 2–0" },
@@ -71,11 +68,11 @@ const DATA = {
     { name: "Ranji Trophy 2026-27", dates: "Oct 1 – Dec 20", meta: "38 teams · Round 3" },
   ],
   photos: [
-    { cap: "India celebrate series-clinching partnership at the Wankhede", art: "lights", c: TONE.night },
-    { cap: "Buttler's blitz at Lord's", art: "manhattan", c: TONE.sky },
-    { cap: "Karachi practice sessions", art: "stumps", c: TONE.clay },
-    { cap: "Fans light up Mumbai", art: "crowd", c: TONE.dusk },
-    { cap: "Bumrah in the nets", art: "seam", c: TONE.ball },
+    { cap: "India celebrate series-clinching partnership at the Wankhede", art: "lights", c: TONE.brand },
+    { cap: "Buttler's blitz at Lord's", art: "manhattan", c: TONE.deep },
+    { cap: "Karachi practice sessions", art: "stumps", c: TONE.brand },
+    { cap: "Fans light up Mumbai", art: "crowd", c: TONE.deep },
+    { cap: "Bumrah in the nets", art: "seam", c: TONE.brand },
   ],
   footer: [
     ["Cricket", ["Live Scores", "Schedule", "Series", "Rankings", "Teams"]],

@@ -1,7 +1,7 @@
 // The live stage: a pager of match boards you can tap, drag or flick, the chart on each board, and the live feed.
 
-// Colours pass the dataviz palette validator against the rendered stage behind the chart (#1b0a2f to #341c4b).
-const WORM_COLORS = { t1: "#9a7cf5", t2: "#c98500" };
+// Theme tokens from the stylesheet; each pair passes the dataviz palette validator on its own surface.
+const WORM_COLORS = { t1: "var(--worm-t1)", t2: "var(--worm-t2)" };
 const wormOvers = (m) => [...new Set(["t1", "t2"].flatMap((t) => (m.worm[t] || []).map(([o]) => o)))].sort((a, b) => a - b);
 const wormRuns = (m, t, over) => (m.worm[t] || []).find(([o]) => o === over)?.[1];
 
@@ -27,9 +27,9 @@ function drawWorm(plot, m) {
   const lines = ["t1", "t2"].filter((t) => m.worm[t]).map((t) => {
     const pts = m.worm[t], [lastO, lastR] = pts.at(-1);
     const d = pts.map(([o, r], i) => `${i ? "L" : "M"}${x(o).toFixed(1)} ${y(r).toFixed(1)}`).join("");
-    const area = m.batting === t ? `<path d="${d}L${x(lastO).toFixed(1)} ${y(0)}L${x(0)} ${y(0)}Z" fill="${WORM_COLORS[t]}" opacity=".12"/>` : "";
-    return `${area}<path class="worm-line" d="${d}" stroke="${WORM_COLORS[t]}"/>
-      <circle class="worm-end" cx="${x(lastO)}" cy="${y(lastR)}" r="4" fill="${WORM_COLORS[t]}"/>
+    const area = m.batting === t ? `<path d="${d}L${x(lastO).toFixed(1)} ${y(0)}L${x(0)} ${y(0)}Z" style="fill:${WORM_COLORS[t]}" opacity=".12"/>` : "";
+    return `${area}<path class="worm-line" d="${d}" style="stroke:${WORM_COLORS[t]}"/>
+      <circle class="worm-end" cx="${x(lastO)}" cy="${y(lastR)}" r="4" style="fill:${WORM_COLORS[t]}"/>
       <text class="worm-value" x="${x(lastO) + 9}" y="${y(lastR) + 4}">${lastR}</text>`;
   }).join("");
   plot.innerHTML = `<svg width="${w}" height="${h}" aria-hidden="true">${yTicks}${xTicks}${lines}<line class="crosshair" y1="${pad.t}" y2="${h - pad.b}" hidden/></svg><div class="worm-tip" hidden></div>`;

@@ -47,16 +47,10 @@ function selectTab(tab) {
   (list.dataset.group === "news" ? renderNews : renderRankings)(tab.dataset.tab);
 }
 
-// Header turns dark while the stage is under it, and follows the page theme after that
-const header = $("site-header");
-new IntersectionObserver(([entry]) => header.classList.toggle("over-stage", entry.isIntersecting), {
-  rootMargin: `-${header.offsetHeight}px 0px 0px 0px`,
-}).observe($("stage"));
-
+// The site is white by default; dark is only ever a choice made with this toggle
 function toggleTheme() {
   const root = document.documentElement;
-  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  const next = dark ? "light" : "dark";
+  const next = root.dataset.theme === "dark" ? "light" : "dark";
   root.classList.add("theming");
   root.dataset.theme = next;
   setTimeout(() => root.classList.remove("theming"), 350);
